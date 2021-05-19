@@ -6,7 +6,7 @@ import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 
 public class ServicioActualizarCompania {
 
-    private static final String LA_COMPANIA_YA_EXISTE_EN_EL_SISTEMA = "La compañia ya existe en el sistema";
+    private static final String LA_COMPANIA_NO_EXISTE_EN_EL_SISTEMA = "La compañia no existe en el sistema";
 
     private final RepositorioCompania repositorioNomina;
 
@@ -20,9 +20,10 @@ public class ServicioActualizarCompania {
     }
 
     private void validarExistenciaPrevia(Compania compania) {
-        boolean existe = this.repositorioNomina.existeExcluyendoId(compania.getId(), compania.getNumerodocumento());
-        if(existe) {
-            throw new ExcepcionDuplicidad(LA_COMPANIA_YA_EXISTE_EN_EL_SISTEMA);
+//        boolean existe = this.repositorioNomina.existeExcluyendoId(compania.getId(), compania.getNumerodocumento());
+        boolean existe = this.repositorioNomina.existe(compania.getNumerodocumento());
+        if(!existe) {
+            throw new ExcepcionDuplicidad(LA_COMPANIA_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

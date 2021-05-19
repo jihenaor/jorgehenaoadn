@@ -21,8 +21,8 @@ public class ComandoCompaniaTestDataBuilder {
         fecha = LocalDateTime.now();
     }
 
-    public ComandoCompaniaTestDataBuilder conRazonsocial(String razonsocial) {
-        this.razonsocial = razonsocial;
+    public ComandoCompaniaTestDataBuilder conNumerodocumento(String numerodocumento) {
+        this.numerodocumento = numerodocumento;
         return this;
     }
 

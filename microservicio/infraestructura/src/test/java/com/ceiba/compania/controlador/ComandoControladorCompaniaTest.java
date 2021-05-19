@@ -45,9 +45,10 @@ public class ComandoControladorCompaniaTest {
     @Test
     public void actualizar() throws Exception{
         // arrange
-        Long id = 2L;
+        Long id = 1L;
         ComandoCompania compania = new ComandoCompaniaTestDataBuilder().build();
-
+        compania.setId(id);
+        compania.setNumerodocumento("816609903");
         // act - assert
         mocMvc.perform(put("/companias/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)

@@ -12,13 +12,13 @@ import org.mockito.Mockito;
 public class ServicioActualizarCompaniaTest {
 
     @Test
-    public void validarCompaniaExistenciaPreviaTest() {
+    public void validarCompaniaNoExistenciaPreviaTest() {
         // arrange
         Compania compania = new CompaniaTestDataBuilder().conId(1L).build();
         RepositorioCompania repositorioCompania = Mockito.mock(RepositorioCompania.class);
-        Mockito.when(repositorioCompania.existeExcluyendoId(Mockito.anyLong(),Mockito.anyString())).thenReturn(true);
+        Mockito.when(repositorioCompania.existeExcluyendoId(Mockito.anyLong(),Mockito.anyString())).thenReturn(false);
         ServicioActualizarCompania servicioActualizarCompania = new ServicioActualizarCompania(repositorioCompania);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarCompania.ejecutar(compania), ExcepcionDuplicidad.class,"La compañia ya existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioActualizarCompania.ejecutar(compania), ExcepcionDuplicidad.class,"La compañia no existe en el sistema");
     }
 }
