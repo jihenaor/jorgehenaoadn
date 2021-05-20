@@ -20,9 +20,9 @@ public class ServicioActualizarAnalistaCompania {
     }
 
     private void validarNumeroEmpresasAsignadas(Compania compania) {
-        int contador = this.repositorioNomina.contarEmpresasAnalista(compania.getAnalistaid());
+        int numeroEmpresasAnalista = this.repositorioNomina.contarEmpresasAnalista(compania.getAnalistaid());
         int limite = 4;
-        if(contador >= limite) {
+        if(numeroEmpresasAnalista >= limite) {
             throw new ExcepcionValorInvalido(EL_ANALISTA_SUPERA_EL_NUMERO_EMPRESAS);
         }
 

@@ -39,6 +39,9 @@ public class Compania {
     private static final int LONGITUD_DOCUMENTO_TIPO_NIT = 9;
     private static final int LONGITUD_MAXIMA_RAZON_SOCIAL = 80;
 
+    //Usar enumeracion para NI, CC
+    //Constantes de validacion longitud documento
+
     private Long id;
     private String tipodocumento;
     private String numerodocumento;
