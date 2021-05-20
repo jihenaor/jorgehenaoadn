@@ -17,7 +17,7 @@ public class CompaniaTestDataBuilder {
         tipodocumento = "NI";
         numerodocumento = "800001001";
         razonsocial = "COMPAÑIA 1";
-        fecha = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), 1, 0, 0, 0, 0);
+        fecha = LocalDateTime.now();
     }
 
     public CompaniaTestDataBuilder conTipodocumento(String tipodocumento) {
