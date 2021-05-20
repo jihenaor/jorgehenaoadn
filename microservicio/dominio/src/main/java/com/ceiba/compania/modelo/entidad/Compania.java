@@ -3,6 +3,7 @@ package com.ceiba.compania.modelo.entidad;
 
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -90,7 +91,7 @@ public class Compania {
                 }
                 break;
             default:
-                throw new ExcepcionSinDatos(SE_DEBE_INGRESAR_EL_TIPO_DE_DOCUMENTO);
+                throw new ExcepcionValorInvalido(SE_DEBE_INGRESAR_TIPO_DE_DOCUMENTO_VALIDO);
         }
     }
 }

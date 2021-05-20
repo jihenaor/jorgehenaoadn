@@ -7,6 +7,7 @@ import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.compania.modelo.entidad.Compania;
 import com.ceiba.compania.puerto.repositorio.RepositorioCompania;
 import com.ceiba.compania.servicio.ServicioCrearCompania;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -54,7 +55,7 @@ public class ServicioCrearCompaniaTest {
                 .conNumerodocumento("123456789");
         // act - assert
         BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
-                ExcepcionLongitudValor.class,
+                ExcepcionValorInvalido.class,
                 "Se debe ingresar tipo de documento valido");
     }
 
