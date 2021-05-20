@@ -16,17 +16,24 @@ public class ServicioCrearNomina {
     }
 
     public Long ejecutar(Nomina nomina) {
+        validarFechaCreacion(nomina);
         validarExistenciaPrevia(nomina);
         return this.repositorioNomina.crear(nomina);
     }
 
-    private void validarExistenciaPrevia(Nomina usuario) {
+    private void validarExistenciaPrevia(Nomina nomina) {
         boolean existe = this.repositorioNomina.existe(
-                usuario.getDocumentoempleado(),
-                usuario.getPeriodo(),
-                usuario.getCompaniaid());
+                nomina.getDocumentoempleado(),
+                nomina.getPeriodo(),
+                nomina.getCompaniaid());
         if(existe) {
             throw new ExcepcionDuplicidad(LA_NOMINA_YA_EXISTE_EN_EL_SISTEMA);
+        }
+    }
+
+     private void validarFechaCreacion(Nomina nomina) {
+        if (nomina.getFechaCreacion().getDayOfMonth() > 14) {
+            throw new RuntimeException("La fecha de registro no puede ser superior al dia 14");
         }
     }
 }

@@ -89,16 +89,19 @@ public class ServicioCrearNominaTest {
         BasePrueba.assertThrows(() -> servicioCrearNomina.ejecutar(nomina), ExcepcionDuplicidad.class,
                 "La nomina ya existe en el sistema");
     }
-/*
+
     @Test
-    public void validarFechaMayor14Test() {
+    public void validarFechaMayorDia14Test() {
         // arrange
         LocalDateTime fecha =
                 LocalDateTime.of(2019, 03, 28, 0, 0, 0, 0);
         NominaTestDataBuilder nominaTestDataBuilder = new NominaTestDataBuilder().conFecha(fecha);
+        RepositorioNomina repositorioNomina = Mockito.mock(RepositorioNomina.class);
+        ServicioCrearNomina servicioCrearNomina = new ServicioCrearNomina(repositorioNomina);
+
         // act - assert
-        BasePrueba.assertThrows(() -> nominaTestDataBuilder.build(), RuntimeException.class,
+        BasePrueba.assertThrows(() -> servicioCrearNomina.ejecutar(nominaTestDataBuilder.build()), RuntimeException.class,
                 "La fecha de registro no puede ser superior al dia 14");
     }
-*/
+
 }

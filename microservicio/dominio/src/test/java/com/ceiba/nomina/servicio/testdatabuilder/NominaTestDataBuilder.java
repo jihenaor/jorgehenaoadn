@@ -18,7 +18,7 @@ public class NominaTestDataBuilder {
         periodo = "202001";
         valor = 1000000D;
         companiaid = 1L;
-        fecha = LocalDateTime.now();
+        fecha = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), 1, 0, 0, 0, 0);
     }
 
     public NominaTestDataBuilder conDocumentoempleado(String documentoempleado) {
