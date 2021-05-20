@@ -10,6 +10,16 @@ public class ServicioActualizarAnalistaCompania {
 
     private final RepositorioCompania repositorioNomina;
 
+    public enum LIMITE {
+        LIMITE_EMPRESAS_ANALISTA(4);
+
+        public final int valor;
+
+        private LIMITE(int valor) {
+            this.valor = valor;
+        }
+    }
+
     public ServicioActualizarAnalistaCompania(RepositorioCompania repositorioNomina) {
         this.repositorioNomina = repositorioNomina;
     }
@@ -21,7 +31,7 @@ public class ServicioActualizarAnalistaCompania {
 
     private void validarNumeroEmpresasAsignadas(Compania compania) {
         int numeroEmpresasAnalista = this.repositorioNomina.contarEmpresasAnalista(compania.getAnalistaid());
-        int limite = 4;
+        int limite = LIMITE.LIMITE_EMPRESAS_ANALISTA.valor;
         if(numeroEmpresasAnalista >= limite) {
             throw new ExcepcionValorInvalido(EL_ANALISTA_SUPERA_EL_NUMERO_EMPRESAS);
         }

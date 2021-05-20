@@ -2,7 +2,6 @@ package com.ceiba.compania.modelo.entidad;
 
 
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
-import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import lombok.Getter;
 
@@ -36,11 +35,24 @@ public class Compania {
     private static final int LONGITUD_TIPO_DOCUMENTO = 2;
 
     private static final int LONGITUD_MINIMA_RAZON_SOCIAL = 2;
-    private static final int LONGITUD_DOCUMENTO_TIPO_NIT = 9;
+
     private static final int LONGITUD_MAXIMA_RAZON_SOCIAL = 80;
 
     //Usar enumeracion para NI, CC
     //Constantes de validacion longitud documento
+
+    public enum LONGITUDESDOCUMENTO {
+        LONGITUD_DOCUMENTO_TIPO_NIT(9),
+        LONGITUD_MINIMINA_CEDULAS_ANTIGULAS(3),
+        LONGITUD_INVALIDA_CEDULAS_ANTIGUAS(9),
+        LONGITUD_CEDULAS_NUEVAS(10);
+
+        public final int longitud;
+
+        private LONGITUDESDOCUMENTO(int longitud) {
+            this.longitud = longitud;
+        }
+    }
 
     private Long id;
     private String tipodocumento;
@@ -85,11 +97,13 @@ public class Compania {
         switch (tipodocumento) {
             case "NI":
                 validarLongitudIgual(numerodocumento,
-                        LONGITUD_DOCUMENTO_TIPO_NIT,
-                        String.format(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA, LONGITUD_DOCUMENTO_TIPO_NIT));
+                        LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT.longitud,
+                        String.format(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA, LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT));
                 break;
             case "CC":
-                if (numerodocumento.length() < 3 || numerodocumento.length() == 9 || numerodocumento.length() > 10) {
+                if (numerodocumento.length() < LONGITUDESDOCUMENTO.LONGITUD_MINIMINA_CEDULAS_ANTIGULAS.longitud
+                        || numerodocumento.length() == LONGITUDESDOCUMENTO.LONGITUD_INVALIDA_CEDULAS_ANTIGUAS.longitud
+                        || numerodocumento.length() > LONGITUDESDOCUMENTO.LONGITUD_CEDULAS_NUEVAS.longitud) {
                     throw new ExcepcionLongitudValor(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA);
                 }
                 break;

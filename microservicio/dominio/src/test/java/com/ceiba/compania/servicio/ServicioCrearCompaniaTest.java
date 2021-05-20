@@ -6,12 +6,28 @@ import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.compania.modelo.entidad.Compania;
 import com.ceiba.compania.puerto.repositorio.RepositorioCompania;
-import com.ceiba.compania.servicio.ServicioCrearCompania;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
 
 public class ServicioCrearCompaniaTest {
+
+    @Mock
+    private RepositorioCompania repositorioCompania;
+
+
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
+
 
     @Test
     public void validarTipoDocumentoLongitud2Test() {
@@ -115,5 +131,38 @@ public class ServicioCrearCompaniaTest {
         BasePrueba.assertThrows(() -> servicioCrearCompania.ejecutar(compania),
                 ExcepcionDuplicidad.class,
                 "La compañia ya existe en el sistema");
+    }
+
+    @Test
+    public void validarCrearCompaniaTest() {
+        // arrange
+        Compania compania = new CompaniaTestDataBuilder().build();
+        Mockito.when(repositorioCompania.crear(compania)).thenReturn(1L);
+        ServicioCrearCompania servicioCrearCompania = new ServicioCrearCompania(repositorioCompania);
+        // act - assert
+        servicioCrearCompania.ejecutar(compania);
+        verify(repositorioCompania, times(1)).crear(compania);
+    }
+
+    @Test
+    public void validarActualizarCompaniaTest() {
+        // arrange
+        Compania compania = new CompaniaTestDataBuilder().build();
+        doNothing().when(repositorioCompania).actualizar(any(Compania.class));
+        ServicioActualizarCompania servicioActualizarCompania = new ServicioActualizarCompania(repositorioCompania);
+        // act - assert
+        servicioActualizarCompania.ejecutar(compania);
+        verify(repositorioCompania, times(1)).actualizar(any(Compania.class));
+    }
+
+    @Test
+    public void validarEliminarCompaniaTest() {
+        // arrange
+        doNothing().when(repositorioCompania).eliminar(anyLong());
+        ServicioEliminarCompania servicioEliminarCompania = new ServicioEliminarCompania(repositorioCompania);
+        // act - assert
+
+        servicioEliminarCompania.ejecutar(1L);
+        verify(repositorioCompania, times(1)).eliminar(anyLong());
     }
 }
