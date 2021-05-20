@@ -48,6 +48,18 @@ public class ServicioCrearCompaniaTest {
     }
 
     @Test
+    public void validarCompaniaConDocumentoTipoCCMenor3DigitosTest() {
+        // arrange
+        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder()
+                .conTipodocumento("CC")
+                .conNumerodocumento("12");
+        // act - assert
+        BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
+                ExcepcionLongitudValor.class,
+                "El numero de documento no tiene la longitud esperada");
+    }
+
+    @Test
     public void validarCompaniaConDocumentoTipoCCMayor10DigitosTest() {
         // arrange
         CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder()

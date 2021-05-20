@@ -86,7 +86,7 @@ public class Compania {
                         String.format(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA, LONGITUD_DOCUMENTO_TIPO_NIT));
                 break;
             case "CC":
-                if (numerodocumento.length() <1 || numerodocumento.length() == 9 || numerodocumento.length() > 10) {
+                if (numerodocumento.length() < 3 || numerodocumento.length() == 9 || numerodocumento.length() > 10) {
                     throw new ExcepcionLongitudValor(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA);
                 }
                 break;
