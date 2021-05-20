@@ -46,6 +46,6 @@ public class CompaniaTestDataBuilder {
     }
 
     public Compania build() {
-        return new Compania(id,tipodocumento, numerodocumento, razonsocial, fecha);
+        return new Compania(id,tipodocumento, numerodocumento, razonsocial, analistaid, fecha);
     }
 }
