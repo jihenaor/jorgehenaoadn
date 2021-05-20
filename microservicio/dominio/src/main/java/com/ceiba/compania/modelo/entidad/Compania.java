@@ -17,9 +17,16 @@ public class Compania {
     private static final String SE_DEBE_INGRESAR_EL_TIPO_DE_DOCUMENTO = "Se debe ingresar el tipo de documento";
     private static final String SE_DEBE_INGRESAR_EL_NUMERO_DE_DOCUMENTO = "Se debe ingresar el número de documento";
     private static final String SE_DEBE_INGRESAR_LA_RAZON_SOCIAL = "Se debe ingresar la razón social";
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
+    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION;
 
-    private static final String EL_TIPO_DE_DOCUMENTO_DEBE_TENER_UNA_LONGITUD_IGUAL_A = "El tipo de documento debe tener una longitud igual a %s";
+    private static final String EL_TIPO_DE_DOCUMENTO_DEBE_TENER_UNA_LONGITUD_IGUAL_A;
+    private static final String EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA;
+
+    static {
+        SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
+        EL_TIPO_DE_DOCUMENTO_DEBE_TENER_UNA_LONGITUD_IGUAL_A = "El tipo de documento debe tener una longitud igual a %s";
+        EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA = "El numero de documento no tiene la longitud esperada";
+    }
 
     private static final String LA_RAZON_SOCIAL_DEBE_TENER_UNA_LONGITUD_MENOR_O_IGUAL_A = "La razon social debe tener una longitud mayor o igual a %s";
     private static final String LA_RAZON_SOCIAL_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La razon social debe tener una longitud menor o igual a %s";
@@ -70,8 +77,6 @@ public class Compania {
     }
 
     private void validarLongitudDocumento() {
-        String EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA = "El numero de documento no tiene la longitud esperada";
-
         switch (tipodocumento) {
             case "NI":
                 validarLongitudIgual(numerodocumento,
