@@ -36,4 +36,10 @@ public interface RepositorioCompania {
      */
     boolean existeExcluyendoId(Long id, String numerodocumento);
 
+    /**
+     * Permite contar el numero de empresas asignadas a un analista
+     * @param analistaid
+     * @return numero de ocurrencias
+     */
+    int contarEmpresasAnalista(Long analistaid);
 }

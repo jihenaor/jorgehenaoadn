@@ -11,6 +11,7 @@ public class ComandoCompaniaTestDataBuilder {
     private String tipodocumento;
     private String numerodocumento;
     private String razonsocial;
+    private Long analistaid;
     private LocalDateTime fecha;
 
     public ComandoCompaniaTestDataBuilder() {
@@ -21,12 +22,22 @@ public class ComandoCompaniaTestDataBuilder {
         fecha = LocalDateTime.now();
     }
 
+    public ComandoCompaniaTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public ComandoCompaniaTestDataBuilder conNumerodocumento(String numerodocumento) {
         this.numerodocumento = numerodocumento;
         return this;
     }
 
+    public ComandoCompaniaTestDataBuilder conAnalistaid(Long analistaid) {
+        this.analistaid = analistaid;
+        return this;
+    }
+
     public ComandoCompania build() {
-        return new ComandoCompania(id, tipodocumento, numerodocumento, razonsocial, fecha);
+        return new ComandoCompania(id, tipodocumento, numerodocumento, razonsocial, analistaid, fecha);
     }
 }

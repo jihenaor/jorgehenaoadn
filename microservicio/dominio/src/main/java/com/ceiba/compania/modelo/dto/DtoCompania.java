@@ -12,5 +12,6 @@ public class DtoCompania {
     private String tipodocumento;
     private String numerodocumento;
     private String razonsocial;
+    private Long analistaid;
     private LocalDateTime fechaCreacion;
 }

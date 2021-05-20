@@ -15,7 +15,7 @@ public class ServicioCrearCompaniaTest {
     @Test
     public void validarTipoDocumentoLongitud2Test() {
         // arrange
-        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder().conTipodocumento("124");
+        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder().conTipodocumento("XXX");
         // act - assert
         BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
                 ExcepcionLongitudValor.class,
@@ -23,23 +23,27 @@ public class ServicioCrearCompaniaTest {
     }
 
     @Test
-    public void validarNumeroDocumentoLongitudMenorIgual3Test() {
+    public void validarCompaniaConDocumentoTipoNitTest() {
         // arrange
-        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder().conNumerodocumento("8");
+        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder()
+                .conTipodocumento("NI")
+                .conNumerodocumento("8");
         // act - assert
         BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
                 ExcepcionLongitudValor.class,
-                "El numero de documento debe tener una longitud mayor o igual a 3");
+                "El numero de documento no tiene la longitud esperada");
     }
 
     @Test
-    public void validarNumeroDocumentoLongitudMenorMayor16Test() {
+    public void validarCompaniaConDocumentoTipoCCTest() {
         // arrange
-        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder().conNumerodocumento("12345678901234567");
+        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder()
+                .conTipodocumento("CC")
+                .conNumerodocumento("123456789");
         // act - assert
         BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
                 ExcepcionLongitudValor.class,
-                "El numero de documento debe tener una longitud menor o igual a 16");
+                "El numero de documento no tiene la longitud esperada");
     }
 
     @Test
@@ -55,7 +59,8 @@ public class ServicioCrearCompaniaTest {
     @Test
     public void validarRazonsocialLongitudMenorMayor80Test() {
         // arrange
-        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder().conRazonSocial("AKLDJF KLAÑSDFJKLÑAS DJFKLÑASJD ÑFLKASJDFL ÑKASJD ÑFLKAJSDFKLÑ JASDKLÑFJ ASDKLÑJF AKLÑSDJF LÑKASDJF KLÑASDJFKL ÑASJDFKL ÑASDJLÑKF JSDL");
+        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder()
+                                                            .conRazonSocial("AKLDJF KLAÑSDFJKLÑAS DJFKLÑASJD ÑFLKASJDFL ÑKASJD ÑFLKAJSDFKLÑ JASDKLÑFJ ASDKLÑJF AKLÑSDJF LÑKASDJF KLÑASDJFKL ÑASJDFKL ÑASDJLÑKF JSDL");
         // act - assert
         BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
                 ExcepcionLongitudValor.class,

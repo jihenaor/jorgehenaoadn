@@ -24,6 +24,9 @@ public class RepositorioCompaniaMysql implements RepositorioCompania {
     @SqlStatement(namespace= "compania", value="existe")
     private static String sqlExiste;
 
+    @SqlStatement(namespace= "compania", value="contarEmpresasAnalista")
+    private static String sqlContarEmpresasAnalista;
+
     @SqlStatement(namespace= "compania", value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
@@ -64,5 +67,13 @@ public class RepositorioCompaniaMysql implements RepositorioCompania {
         paramSource.addValue("numerodocumento", numerodocumento);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public int contarEmpresasAnalista(Long analistaid) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("analistaid", analistaid);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContarEmpresasAnalista, paramSource, Integer.class);
     }
 }

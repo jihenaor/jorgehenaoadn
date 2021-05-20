@@ -10,6 +10,7 @@ public class CompaniaTestDataBuilder {
     private String tipodocumento;
     private String numerodocumento;
     private String razonsocial;
+    private Long analistaid;
     private LocalDateTime fecha;
 
     public CompaniaTestDataBuilder() {
@@ -36,6 +37,11 @@ public class CompaniaTestDataBuilder {
 
     public CompaniaTestDataBuilder conId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public CompaniaTestDataBuilder conAnalistaid(Long analistaid) {
+        this.analistaid = analistaid;
         return this;
     }
 

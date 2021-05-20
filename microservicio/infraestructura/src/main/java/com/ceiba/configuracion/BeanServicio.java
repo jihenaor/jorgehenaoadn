@@ -1,6 +1,7 @@
 package com.ceiba.configuracion;
 
 import com.ceiba.compania.puerto.repositorio.RepositorioCompania;
+import com.ceiba.compania.servicio.ServicioActualizarAnalistaCompania;
 import com.ceiba.compania.servicio.ServicioActualizarCompania;
 import com.ceiba.compania.servicio.ServicioCrearCompania;
 import com.ceiba.compania.servicio.ServicioEliminarCompania;
@@ -42,5 +43,10 @@ public class BeanServicio {
     @Bean
     public ServicioActualizarCompania servicioActualizarCompania(RepositorioCompania repositorioCompania) {
         return new ServicioActualizarCompania(repositorioCompania);
+    }
+
+    @Bean
+    public ServicioActualizarAnalistaCompania servicioActualizarAnalistaCompania(RepositorioCompania repositorioCompania) {
+        return new ServicioActualizarAnalistaCompania(repositorioCompania);
     }
 }

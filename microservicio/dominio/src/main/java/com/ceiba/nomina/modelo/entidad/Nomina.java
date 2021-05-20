@@ -44,6 +44,16 @@ public class Nomina {
         this.valor = valor;
         this.companiaid = companiaid;
         this.fechaCreacion = fechaCreacion;
-    }
 
+//        validarFechaCreacion();
+    }
+/*
+    private void validarFechaCreacion() {
+        if (id == null) {
+            if (fechaCreacion.getDayOfMonth() > 14) {
+                throw new RuntimeException("La fecha de registro no puede ser superior al dia 14");
+            }
+        }
+    }
+*/
 }

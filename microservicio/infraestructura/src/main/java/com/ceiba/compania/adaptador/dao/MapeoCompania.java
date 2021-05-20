@@ -17,9 +17,10 @@ public class MapeoCompania implements RowMapper<DtoCompania>, MapperResult {
         String tipodocumento = resultSet.getString("tipodocumento");
         String numerodocumento = resultSet.getString("numerodocumento");
         String razonsocial = resultSet.getString("razonsocial");
+        Long analistaid = resultSet.getLong("analistaid");
         LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
 
-        return new DtoCompania(id, tipodocumento,numerodocumento, razonsocial, fecha);
+        return new DtoCompania(id, tipodocumento,numerodocumento, razonsocial, analistaid, fecha);
     }
 
 }

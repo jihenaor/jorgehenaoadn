@@ -46,6 +46,11 @@ public class NominaTestDataBuilder {
         return this;
     }
 
+    public NominaTestDataBuilder conFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+        return this;
+    }
+
     public Nomina build() {
         return new Nomina(id, documentoempleado, periodo, valor, companiaid, fecha);
     }

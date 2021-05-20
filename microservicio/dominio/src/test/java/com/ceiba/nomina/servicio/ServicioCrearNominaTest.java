@@ -12,6 +12,8 @@ import org.mockito.Mockito;
 
 import com.ceiba.BasePrueba;
 
+import java.time.LocalDateTime;
+
 public class ServicioCrearNominaTest {
 
     private static final String SE_DEBE_INGRESAR_EL_DOCUMENTO_DEL_EMPLEADO = "Se debe ingresar el documento del empleado";
@@ -87,5 +89,16 @@ public class ServicioCrearNominaTest {
         BasePrueba.assertThrows(() -> servicioCrearNomina.ejecutar(nomina), ExcepcionDuplicidad.class,
                 "La nomina ya existe en el sistema");
     }
-
+/*
+    @Test
+    public void validarFechaMayor14Test() {
+        // arrange
+        LocalDateTime fecha =
+                LocalDateTime.of(2019, 03, 28, 0, 0, 0, 0);
+        NominaTestDataBuilder nominaTestDataBuilder = new NominaTestDataBuilder().conFecha(fecha);
+        // act - assert
+        BasePrueba.assertThrows(() -> nominaTestDataBuilder.build(), RuntimeException.class,
+                "La fecha de registro no puede ser superior al dia 14");
+    }
+*/
 }
