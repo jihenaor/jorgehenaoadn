@@ -13,6 +13,7 @@ public class FabricaCompania {
                 comandoCompania.getTipodocumento(),
                 comandoCompania.getNumerodocumento(),
                 comandoCompania.getRazonsocial(),
+                comandoCompania.getAnalistaid(),
                 comandoCompania.getFecha()
         );
     }

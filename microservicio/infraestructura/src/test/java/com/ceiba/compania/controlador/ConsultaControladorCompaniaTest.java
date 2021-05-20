@@ -24,7 +24,7 @@ public class ConsultaControladorCompaniaTest {
 
     @Autowired
     private MockMvc mocMvc;
-/*
+
     @Test
     public void listar() throws Exception {
         // arrange
@@ -40,5 +40,4 @@ public class ConsultaControladorCompaniaTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].numerodocumento", is("816609903")));
     }
-    */
 }

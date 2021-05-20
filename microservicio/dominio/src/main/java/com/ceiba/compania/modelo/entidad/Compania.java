@@ -38,11 +38,12 @@ public class Compania {
     private Long analistaid;
     private LocalDateTime fechaCreacion;
 
-    public Compania(Long id, String tipodocumento, String numerodocumento, String razonsocial, LocalDateTime fechaCreacion) {
+    public Compania(Long id, String tipodocumento, String numerodocumento, String razonsocial, Long analistaid, LocalDateTime fechaCreacion) {
         this.id = id;
         this.tipodocumento = tipodocumento;
         this.numerodocumento = numerodocumento;
         this.razonsocial = razonsocial;
+        this.analistaid = analistaid;
 
         this.fechaCreacion = fechaCreacion;
 
