@@ -15,6 +15,7 @@ import static com.ceiba.dominio.ValidadorArgumento.validarLongitudMaxima;
 @Getter
 public class Compania {
     private static final String SE_DEBE_INGRESAR_EL_TIPO_DE_DOCUMENTO = "Se debe ingresar el tipo de documento";
+    private static final String SE_DEBE_INGRESAR_TIPO_DE_DOCUMENTO_VALIDO = "Se debe ingresar tipo de documento valido";
     private static final String SE_DEBE_INGRESAR_EL_NUMERO_DE_DOCUMENTO = "Se debe ingresar el número de documento";
     private static final String SE_DEBE_INGRESAR_LA_RAZON_SOCIAL = "Se debe ingresar la razón social";
     private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION;
@@ -89,7 +90,7 @@ public class Compania {
                 }
                 break;
             default:
-                throw new ExcepcionSinDatos(SE_DEBE_INGRESAR_EL_NUMERO_DE_DOCUMENTO);
+                throw new ExcepcionSinDatos(SE_DEBE_INGRESAR_EL_TIPO_DE_DOCUMENTO);
         }
     }
 }

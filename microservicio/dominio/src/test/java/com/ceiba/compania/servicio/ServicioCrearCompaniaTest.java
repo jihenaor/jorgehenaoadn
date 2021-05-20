@@ -47,6 +47,18 @@ public class ServicioCrearCompaniaTest {
     }
 
     @Test
+    public void validarCompaniaConDocumentoTipoIndefinidoTest() {
+        // arrange
+        CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder()
+                .conTipodocumento("XX")
+                .conNumerodocumento("123456789");
+        // act - assert
+        BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
+                ExcepcionLongitudValor.class,
+                "Se debe ingresar tipo de documento valido");
+    }
+
+    @Test
     public void validarRazonsocialLongitudMenor2Test() {
         // arrange
         CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder().conRazonSocial("A");
