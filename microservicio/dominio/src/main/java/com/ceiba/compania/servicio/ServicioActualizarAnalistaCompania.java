@@ -2,6 +2,7 @@ package com.ceiba.compania.servicio;
 
 import com.ceiba.compania.modelo.entidad.Compania;
 import com.ceiba.compania.puerto.repositorio.RepositorioCompania;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 
 public class ServicioActualizarAnalistaCompania {
 
@@ -22,7 +23,7 @@ public class ServicioActualizarAnalistaCompania {
         int contador = this.repositorioNomina.contarEmpresasAnalista(compania.getAnalistaid());
         int limite = 4;
         if(contador >= limite) {
-            throw new RuntimeException(EL_ANALISTA_SUPERA_EL_NUMERO_EMPRESAS);
+            throw new ExcepcionValorInvalido(EL_ANALISTA_SUPERA_EL_NUMERO_EMPRESAS);
         }
 
     }
