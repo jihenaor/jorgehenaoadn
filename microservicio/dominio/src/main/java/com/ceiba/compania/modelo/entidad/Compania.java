@@ -20,8 +20,6 @@ public class Compania {
 
     private static final String EL_TIPO_DE_DOCUMENTO_DEBE_TENER_UNA_LONGITUD_IGUAL_A = "El tipo de documento debe tener una longitud igual a %s";
 
-    private static final String EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA = "El numero de documento no tiene la longitud esperada";
-
     private static final String LA_RAZON_SOCIAL_DEBE_TENER_UNA_LONGITUD_MENOR_O_IGUAL_A = "La razon social debe tener una longitud mayor o igual a %s";
     private static final String LA_RAZON_SOCIAL_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La razon social debe tener una longitud menor o igual a %s";
 
@@ -60,6 +58,7 @@ public class Compania {
     }
 
     private void validarLongitudAtributos() {
+
         validarLongitudIgual(tipodocumento, LONGITUD_TIPO_DOCUMENTO, String.format(EL_TIPO_DE_DOCUMENTO_DEBE_TENER_UNA_LONGITUD_IGUAL_A, LONGITUD_TIPO_DOCUMENTO));
 
         validarLongitudDocumento();
@@ -70,6 +69,8 @@ public class Compania {
     }
 
     private void validarLongitudDocumento() {
+        String EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA = "El numero de documento no tiene la longitud esperada";
+
         switch (tipodocumento) {
             case "NI":
                 validarLongitudIgual(numerodocumento,
