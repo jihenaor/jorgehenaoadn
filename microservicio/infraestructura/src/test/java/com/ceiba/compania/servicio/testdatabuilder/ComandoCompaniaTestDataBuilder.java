@@ -18,6 +18,7 @@ public class ComandoCompaniaTestDataBuilder {
         tipodocumento = "NI";
         numerodocumento = "816609801";
 //        razonsocial = UUID.randomUUID().toString();
+        analistaid = null;
         razonsocial = "SERVICIUDAD";
         fecha = LocalDateTime.now();
     }
