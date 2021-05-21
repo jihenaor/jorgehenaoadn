@@ -31,12 +31,7 @@ public class ComandoControladorCompania {
     @PostMapping
     @ApiOperation("Crear Compania")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCompania comandoCompania) {
-    	try {
-			return manejadorCrearCompania.ejecutar(comandoCompania);
-		} catch (Exception e) {
-    		e.printStackTrace();
-    		throw e;
-		}
+		return manejadorCrearCompania.ejecutar(comandoCompania);
     }
 
     @DeleteMapping(value="/{id}")
