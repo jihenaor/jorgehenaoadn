@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+import static com.ceiba.compania.modelo.entidad.Compania.TIPOSDOCUMENTO.NIT;
 import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
 import static com.ceiba.dominio.ValidadorArgumento.validarLongitudIgual;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
@@ -53,7 +54,7 @@ public class Compania {
             this.longitud = longitud;
         }
     }
-
+    
     private Long id;
     private String tipodocumento;
     private String numerodocumento;
@@ -97,19 +98,27 @@ public class Compania {
         validarLongitudMaxima(razonsocial, LONGITUD_MAXIMA_RAZON_SOCIAL, String.format(LA_RAZON_SOCIAL_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A, LONGITUD_MAXIMA_RAZON_SOCIAL));
     }
 
+    private void validarLongitudDocumentoNit() {
+        validarLongitudIgual(numerodocumento,
+                LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT.longitud,
+                String.format(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA, LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT.longitud));
+    }
+
+    private void validarLongitudDocumentoCedula() {
+        if (numerodocumento.length() < LONGITUDESDOCUMENTO.LONGITUD_MINIMINA_CEDULAS_ANTIGULAS.longitud
+                || numerodocumento.length() == LONGITUDESDOCUMENTO.LONGITUD_INVALIDA_CEDULAS_ANTIGUAS.longitud
+                || numerodocumento.length() > LONGITUDESDOCUMENTO.LONGITUD_CEDULAS_NUEVAS.longitud) {
+            throw new ExcepcionLongitudValor(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA);
+        }
+    }
+
     private void validarLongitudDocumento() {
         switch (tipodocumento) {
             case "NI":
-                validarLongitudIgual(numerodocumento,
-                        LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT.longitud,
-                        String.format(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA, LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT));
+                validarLongitudDocumentoNit();
                 break;
             case "CC":
-                if (numerodocumento.length() < LONGITUDESDOCUMENTO.LONGITUD_MINIMINA_CEDULAS_ANTIGULAS.longitud
-                        || numerodocumento.length() == LONGITUDESDOCUMENTO.LONGITUD_INVALIDA_CEDULAS_ANTIGUAS.longitud
-                        || numerodocumento.length() > LONGITUDESDOCUMENTO.LONGITUD_CEDULAS_NUEVAS.longitud) {
-                    throw new ExcepcionLongitudValor(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA);
-                }
+                validarLongitudDocumentoCedula();
                 break;
             default:
                 throw new ExcepcionValorInvalido(SE_DEBE_INGRESAR_TIPO_DE_DOCUMENTO_VALIDO);
