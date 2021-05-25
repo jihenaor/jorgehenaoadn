@@ -4,6 +4,8 @@ import com.ceiba.compania.comando.ComandoCompania;
 import com.ceiba.compania.modelo.entidad.Compania;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class FabricaCompania {
 
@@ -14,7 +16,7 @@ public class FabricaCompania {
                 comandoCompania.getNumerodocumento(),
                 comandoCompania.getRazonsocial(),
                 comandoCompania.getAnalistaid(),
-                comandoCompania.getFecha()
+                LocalDateTime.now()
         );
     }
 
