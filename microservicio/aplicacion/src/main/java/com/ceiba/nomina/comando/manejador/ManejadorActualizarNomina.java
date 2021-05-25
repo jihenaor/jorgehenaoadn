@@ -15,7 +15,7 @@ public class ManejadorActualizarNomina implements ManejadorComando<ComandoNomina
     private final ServicioActualizarNomina servicioActualizarNomina;
 
     public ManejadorActualizarNomina(FabricaNomina fabricaNomina, ServicioActualizarNomina servicioActualizarNomina) {
-        System.out.println("Paso por consructor-ManejadorActualizarNomina ");
+        System.out.println("Paso por constructor-ManejadorActualizarNomina ");
         this.fabricaNomina = fabricaNomina;
         this.servicioActualizarNomina = servicioActualizarNomina;
     }

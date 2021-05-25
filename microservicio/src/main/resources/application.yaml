@@ -6,7 +6,7 @@ jasypt:
 server:
    port: 8083
    servlet:
-      context-path: /JORGEHENAOADN
+      context-path: /prospectos-vida
       session:
          timeout: 21600s
 
