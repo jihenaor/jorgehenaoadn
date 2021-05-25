@@ -7,7 +7,6 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-import static com.ceiba.compania.modelo.entidad.Compania.TIPOSDOCUMENTO.NIT;
 import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
 import static com.ceiba.dominio.ValidadorArgumento.validarLongitudIgual;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
@@ -54,7 +53,9 @@ public class Compania {
             this.longitud = longitud;
         }
     }
-    
+
+
+
     private Long id;
     private String tipodocumento;
     private String numerodocumento;
@@ -101,7 +102,7 @@ public class Compania {
     private void validarLongitudDocumentoNit() {
         validarLongitudIgual(numerodocumento,
                 LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT.longitud,
-                String.format(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA, LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT.longitud));
+                String.format(EL_NUMERO_DE_DOCUMENTO_NO_TIENE_LA_LONGITUD_ESPERADA, LONGITUDESDOCUMENTO.LONGITUD_DOCUMENTO_TIPO_NIT));
     }
 
     private void validarLongitudDocumentoCedula() {
