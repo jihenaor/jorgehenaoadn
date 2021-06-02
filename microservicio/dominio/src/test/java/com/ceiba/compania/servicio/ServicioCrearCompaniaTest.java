@@ -80,7 +80,7 @@ public class ServicioCrearCompaniaTest {
         // arrange
         CompaniaTestDataBuilder companiaTestDataBuilder = new CompaniaTestDataBuilder()
                 .conTipodocumento("CC")
-                .conNumerodocumento("1234567890");
+                .conNumerodocumento("12345678901");
         // act - assert
         BasePrueba.assertThrows(() -> companiaTestDataBuilder.build(),
                 ExcepcionLongitudValor.class,

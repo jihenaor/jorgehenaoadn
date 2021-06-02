@@ -35,6 +35,5 @@ public class ServicioActualizarAnalistaCompania {
         if(numeroEmpresasAnalista >= limite) {
             throw new ExcepcionValorInvalido(EL_ANALISTA_SUPERA_EL_NUMERO_EMPRESAS);
         }
-
     }
 }

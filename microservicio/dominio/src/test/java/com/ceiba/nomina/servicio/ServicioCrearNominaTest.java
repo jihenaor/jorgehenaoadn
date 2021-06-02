@@ -35,7 +35,7 @@ public class ServicioCrearNominaTest {
     private static final String SE_DEBE_INGRESAR_UN_PERIODO = "Se debe ingresar un periodo";
     private static final String EL_PERIODO_DEBE_TERNER_UNA_LONGITUD_6 = "El periodo debe tener una longitud de 6 digitos";
     private static final String EL_IDCOMPANIA_ES_REQUERIDO = "Se debe ingresar el identificador de la compañia";
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
+    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación de la nomina";
 
 
     @Mock

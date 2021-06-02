@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.nomina.comando.ComandoNomina;
 
+import java.time.LocalDateTime;
+
 @Component
 public class FabricaNomina {
 
@@ -15,7 +17,7 @@ public class FabricaNomina {
                 comandoNomina.getPeriodo(),
                 comandoNomina.getValor(),
                 comandoNomina.getCompaniaid(),
-                comandoNomina.getFecha()
+                LocalDateTime.now()
         );
     }
 

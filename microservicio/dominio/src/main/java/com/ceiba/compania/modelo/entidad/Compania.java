@@ -54,8 +54,6 @@ public class Compania {
         }
     }
 
-
-
     private Long id;
     private String tipodocumento;
     private String numerodocumento;
